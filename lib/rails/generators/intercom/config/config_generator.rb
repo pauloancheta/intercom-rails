@@ -7,6 +7,7 @@ module Intercom
       end
 
       argument :app_id, :desc => "Your Intercom app-id, which can be found here: https://app.intercom.io/apps/api_keys"
+      argument :token, :desc => "Your Intercom app-token"
       argument :api_secret, :desc => "Your Intercom api-secret, used for Identity Verification", :optional => true
       argument :session_duration, :desc => "user session duration, this should match your app", :optional => true
 
@@ -14,6 +15,7 @@ module Intercom
       def create_config_file
         @app_id = app_id
         @api_secret = api_secret
+        @token = token
         @session_duration = session_duration
         @include_for_logged_out_users = false
 

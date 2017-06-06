@@ -160,6 +160,13 @@ module IntercomRails
       nil
     end
 
+    def token
+      return user_details[:token] if user_details[:token].present?
+      return IntercomRails.config.app_id if IntercomRails.config.app_id.present?
+      return 'abcd1234' if defined?(Rails) && (Rails.env.development? || Rails.env.test?)
+      nil
+    end
+
     def widget_options_from_config
       config = {}
 
